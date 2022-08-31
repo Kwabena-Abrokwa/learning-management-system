@@ -149,11 +149,7 @@ const Signup: React.FC<SignupProps> = () => {
 							</div>
 						)}
 						<CustomButton>
-							{loader ? (
-								<div>Please wait...</div>
-							) : (
-								<div>Create account</div>
-							)}
+							{loader ? "Please wait..." : "Create account"}
 						</CustomButton>
 					</form>
 				</div>

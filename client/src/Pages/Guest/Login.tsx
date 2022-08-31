@@ -107,7 +107,7 @@ const Login: React.FC<LoginProps> = () => {
 							</div>
 						)}
 						<CustomButton>
-							{loader ? <div>Please wait...</div> : <div>Login</div>}
+							{loader ? "Please wait..." : "Login"}
 						</CustomButton>
 					</form>
 				</div>

@@ -1,7 +1,7 @@
 import React from "react";
 
 interface CustomButtonProps {
-	children: JSX.Element;
+	children: string;
 	onclick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -10,7 +10,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({ children, onclick }) => {
 		<button
 			type="submit"
 			onClick={onclick}
-			className="bg-[#1DA1F2] w-full h-12 text-center text-white rounded-md my-5"
+			className="bg-[#1DA1F2] w-full h-12 text-center text-white rounded-md my-2"
 		>
 			{children}
 		</button>

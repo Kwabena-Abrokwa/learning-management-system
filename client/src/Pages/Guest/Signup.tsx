@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import CustomButton from "../../Components/Customs/CustomButton";
 import CustomInput from "../../Components/Customs/CustomInput";
 import { Link, useNavigate } from "react-router-dom";
-import { BACKEND_URL } from "../../API/URL";
 import axios from "axios";
 import CustomSelect from "../../Components/Customs/CustomSelect";
 
@@ -12,9 +11,11 @@ const Signup: React.FC<SignupProps> = () => {
 	const [data, setdata] = useState({
 		email: "",
 		user_name: "",
-		password: "",
 		entry: "Beginner",
+		password: "",
 	});
+
+	const [confirmPassword, setconfirmPassword] = useState("");
 
 	const navigate = useNavigate();
 
@@ -32,19 +33,27 @@ const Signup: React.FC<SignupProps> = () => {
 	const handleLogin = async (e: any) => {
 		e.preventDefault();
 		setloader(true);
-		if (data.user_name === "" || data.password === "") {
+		if (data.user_name === "" || data.password === "" || data.email === "") {
 			setloader(false);
 			setmessage("All fields are required");
 			return null;
 		}
+
+		if (data.password.toLowerCase() !== confirmPassword.toLowerCase()) {
+			setloader(false);
+			setmessage("Passwords do not match");
+			return null;
+		}
 		await axios
-			.post(`${BACKEND_URL}/loginUser`, data)
+			.post(`/signup`, data)
 			.then(({ data }) => {
 				if (data.auth === 1) {
 					setloader(false);
-					localStorage.setItem("user_name", data.user_name);
-					localStorage.setItem("token", data.token);
-					navigate("/dashboard");
+					setmessage(data.message);
+					setcolor("green");
+					setTimeout(() => {
+						navigate("/");
+					}, 1000);
 				} else {
 					setmessage(data.message);
 					setcolor("red");
@@ -120,9 +129,11 @@ const Signup: React.FC<SignupProps> = () => {
 							</label>
 							<CustomInput
 								type={"password"}
-								value={data.password}
+								value={confirmPassword}
 								name={"password"}
-								handleChange={handleChange}
+								handleChange={(e: any) =>
+									setconfirmPassword(e.target.value)
+								}
 							/>
 						</div>
 						<div className="flex justify-between items-center my-8">

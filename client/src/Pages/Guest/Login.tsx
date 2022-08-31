@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import CustomButton from "../../Components/Customs/CustomButton";
 import CustomInput from "../../Components/Customs/CustomInput";
 import { Link, useNavigate } from "react-router-dom";
-import { BACKEND_URL } from "../../API/URL";
 import axios from "axios";
 
 interface LoginProps {}
@@ -35,21 +34,19 @@ const Login: React.FC<LoginProps> = () => {
 			return null;
 		}
 		await axios
-			.post(`${BACKEND_URL}/loginUser`, data)
+			.post(`/loginUser`, data)
 			.then(({ data }) => {
 				if (data.auth === 1) {
 					setloader(false);
-					localStorage.setItem("user_name", data.user_name);
+					localStorage.setItem("user_name", data.username);
 					localStorage.setItem("token", data.token);
 					navigate("/dashboard");
-				} else {
-					setmessage(data.message);
-					setcolor("red");
-					setloader(false);
 				}
 			})
 			.catch((err) => {
 				console.log(err);
+				setmessage(err.response.data.message);
+				setcolor("red");
 				setloader(false);
 			});
 	};

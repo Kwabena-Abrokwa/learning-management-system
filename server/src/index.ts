@@ -8,6 +8,7 @@ import express, {
 import cors from "cors";
 import multer from "multer";
 import dotenv from "dotenv";
+import UserRoutes from "./Routes/UsersRoute";
 
 const app: Application = express();
 
@@ -16,6 +17,10 @@ app.use(express.json());
 //env file configuration
 dotenv.config();
 
+export interface ProcessEnv {
+	[key: string]: string | undefined;
+}
+
 const PORT = "8081";
 
 app.get("/", (req: Request, res: Response): void => {
@@ -23,7 +28,7 @@ app.get("/", (req: Request, res: Response): void => {
 });
 
 //This routes are for admins
-app.use("/api/admin");
+app.use("/api/users", UserRoutes);
 
 //error handler
 app.use(

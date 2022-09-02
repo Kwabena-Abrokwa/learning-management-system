@@ -3,21 +3,33 @@ import CustomButton from "../Customs/CustomButton";
 
 interface CourseEnrollProps {
 	book: string;
+	name: string;
+	title: string;
+	handleEnroll: () => void;
+	loader: Boolean;
 }
 
-const CourseEnroll: React.FC<CourseEnrollProps> = ({ book }) => {
+const CourseEnroll: React.FC<CourseEnrollProps> = ({
+	book,
+	title,
+	name,
+	handleEnroll,
+	loader,
+}) => {
 	return (
 		<div className="lg:col-span-3 cursor-pointer py-2 hover:shadow-md rounded-md shadow ">
-			<img src={book} alt="book" className="w-full h-60" />
+			<img src={book} alt="book" className="w-full h-64" />
 			<div className="px-3">
-				<h2 className="text-center py-5 font-semibold text-lg">
-					JavaScript Master
-				</h2>
-				<p className="pb-2 ">
-					This is helps you with JavaScript concepts. Continue reading
-					content from this book and master Javascript.
-				</p>
-				<CustomButton children={"Enroll now"} />
+				<div className="h-44">
+					<h2 className="text-center py-5 font-semibold text-lg">
+						{name}
+					</h2>
+					<p className="pb-2 ">{title}</p>
+				</div>
+				<CustomButton
+					onclick={() => handleEnroll()}
+					children={loader ? "Enrolling, Please wait" : "Enroll now"}
+				/>
 			</div>
 		</div>
 	);

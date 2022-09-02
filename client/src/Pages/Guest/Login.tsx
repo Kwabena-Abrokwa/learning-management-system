@@ -38,6 +38,7 @@ const Login: React.FC<LoginProps> = () => {
 			.then(({ data }) => {
 				if (data.auth === 1) {
 					setloader(false);
+					localStorage.setItem("user_id", data.id);
 					localStorage.setItem("user_name", data.username);
 					localStorage.setItem("token", data.token);
 					navigate("/dashboard");

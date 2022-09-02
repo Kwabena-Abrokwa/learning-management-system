@@ -5,6 +5,7 @@ import Login from "./Pages/Guest/Login";
 import Signup from "./Pages/Guest/Signup";
 import HomeDashboard from "./Pages/Auth/HomeDashboard";
 import EnrollCourses from "./Pages/Auth/EnrollCourses";
+import LessonsDashboard from "./Pages/Auth/LessonsDashboard";
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 				<Route path="/signup" element={<Signup />} />
 				<Route path="/dashboard" element={<HomeDashboard />} />
 				<Route path="/courses" element={<EnrollCourses />} />
+				<Route path="/lessons/:id" element={<LessonsDashboard />} />
 			</Routes>
 		</div>
 	);

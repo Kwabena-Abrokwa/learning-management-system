@@ -36,12 +36,18 @@ const Login: React.FC<LoginProps> = () => {
 		await axios
 			.post(`/loginUser`, data)
 			.then(({ data }) => {
+				console.log(data);
+				
 				if (data.auth === 1) {
 					setloader(false);
 					localStorage.setItem("user_id", data.id);
 					localStorage.setItem("user_name", data.username);
 					localStorage.setItem("token", data.token);
 					navigate("/dashboard");
+				}else{
+					setmessage(data.message);
+					setcolor("red");
+					setloader(false);
 				}
 			})
 			.catch((err) => {

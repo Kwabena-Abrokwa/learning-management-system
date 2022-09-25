@@ -4,15 +4,12 @@ import TableComponent from "../../Components/MadeComponent/TableComponent";
 
 interface LessonsDashboardProps {}
 
-
-const data= [{
-    
-}]
+const data = [{}];
 
 const LessonsDashboard: React.FC<LessonsDashboardProps> = ({}) => {
 	return (
 		<DashboardLayout>
-			<TableComponent/>
+			<TableComponent />
 		</DashboardLayout>
 	);
 };

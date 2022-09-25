@@ -51,6 +51,7 @@ export const loginUser = (req: Request, res: Response) => {
 		(err, result) => {
 			if (err) {
 				console.log(err);
+				return res.status(401).json({ message: "Something went wrong" });
 			}
 			if (result.length > 0) {
 				bcrypt.compare(password, result[0].password, (err, response) => {
@@ -69,6 +70,7 @@ export const loginUser = (req: Request, res: Response) => {
 							auth: 1,
 							token: token,
 							username: name,
+							id: id,
 						});
 						console.log("Success");
 					} else {
@@ -80,6 +82,47 @@ export const loginUser = (req: Request, res: Response) => {
 				});
 			} else {
 				res.status(400).json({ auth: 0, message: "No user found" });
+			}
+		}
+	);
+};
+
+export const getAllCourses = (req: Request, res: Response) => {
+	const user_id = req.params.user_id;
+
+	db.query(
+		"SELECT * FROM courses WHERE user_id = ?",
+		user_id,
+		(err, results) => {
+			if (err) {
+				console.log(err);
+				return res.status(401).json({ message: "Something went wrong" });
+			} else {
+				return res.status(201).json(results);
+			}
+		}
+	);
+};
+
+export const enrollUsers = (req: Request, res: Response) => {
+	const course_id = req.body.course_id;
+	const user_id = req.body.user_id;
+	const name = req.body.name;
+	const title = req.body.title;
+	const book = req.body.book;
+
+	db.query(
+		"INSERT INTO courses(course_id, user_id, name, title, book) VALUES (?, ?, ?, ?, ?)",
+		[course_id, user_id, name, title, book],
+		(err, result) => {
+			if (err) {
+				console.log(err);
+				return res.status(401).json({ message: "Something went wrong" });
+			} else {
+				console.log(`${name} enrolled succesffully, start lessons`);
+				return res.status(201).json({
+					message: `${name} enrolled succesffully, start lessons`,
+				});
 			}
 		}
 	);

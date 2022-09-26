@@ -28,7 +28,7 @@ const CourseEnroll: React.FC<CourseEnrollProps> = ({
 				</div>
 				<CustomButton
 					onclick={() => handleEnroll()}
-					children={loader ? "Enrolling, Please wait" : "Enroll now"}
+					children={"Enroll now"}
 				/>
 			</div>
 		</div>

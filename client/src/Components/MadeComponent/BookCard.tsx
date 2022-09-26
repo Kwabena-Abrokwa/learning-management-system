@@ -18,7 +18,7 @@ const BookCard: React.FC<BookCardProps> = ({
 	return (
 		<div className="lg:col-span-3 cursor-pointer py-2 hover:shadow-md rounded-md shadow ">
 			<img
-				src={require(`../../Assets/${book}`)}
+				src={require(`../../Assets/bookimg/${book}`)}
 				alt="book"
 				className="w-full h-60"
 			/>
@@ -29,8 +29,8 @@ const BookCard: React.FC<BookCardProps> = ({
 					</h2>
 					<p className="pb-2 ">{title}</p>
 				</div>
-				<Link to={`../lessons/${course_id}`}>
-					<CustomButton children={"Start lessons"} />
+				<Link to={`../lessons/${course_id}`} state={{ name: name }}>
+					<CustomButton children={"View course"} />
 				</Link>
 			</div>
 		</div>

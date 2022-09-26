@@ -61,6 +61,7 @@ export const loginUser = (req: Request, res: Response) => {
 					if (response) {
 						const id = result[0].id;
 						const name = result[0].username;
+						const level = result[0].entry;
 						const token = Jwt.sign(
 							{ id, name },
 							process.env.SECRET_TOKEN_ADMIN as string
@@ -71,6 +72,7 @@ export const loginUser = (req: Request, res: Response) => {
 							token: token,
 							username: name,
 							id: id,
+							level: level,
 						});
 						console.log("Success");
 					} else {

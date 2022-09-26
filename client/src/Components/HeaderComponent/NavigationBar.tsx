@@ -5,6 +5,7 @@ interface NavigationBarProps {}
 
 const NavigationBar: React.FC<NavigationBarProps> = () => {
 	const naviagte = useNavigate();
+	const username = localStorage.getItem("user_name")
 	const handleLogout = () => {
 		localStorage.clear();
 		naviagte("/");
@@ -17,10 +18,7 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
 			</Link>
 			<div className="flex justify-between items-center text-white">
 				<Link to={"/"}>
-					<p className="px-4 cursor-pointer">About</p>
-				</Link>
-				<Link to={"/"}>
-					<p className="px-4 cursor-pointer">Help</p>
+					<p className="px-4 cursor-pointer">Welcome {username}</p>
 				</Link>
 				<button onClick={handleLogout}>
 					<p className="px-4 cursor-pointer">Logout</p>

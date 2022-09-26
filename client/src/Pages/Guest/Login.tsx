@@ -37,14 +37,15 @@ const Login: React.FC<LoginProps> = () => {
 			.post(`/loginUser`, data)
 			.then(({ data }) => {
 				console.log(data);
-				
+
 				if (data.auth === 1) {
 					setloader(false);
 					localStorage.setItem("user_id", data.id);
 					localStorage.setItem("user_name", data.username);
 					localStorage.setItem("token", data.token);
+					localStorage.setItem("level", data.level);
 					navigate("/dashboard");
-				}else{
+				} else {
 					setmessage(data.message);
 					setcolor("red");
 					setloader(false);

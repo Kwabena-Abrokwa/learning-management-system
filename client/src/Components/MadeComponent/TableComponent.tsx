@@ -25,6 +25,7 @@ const TableComponent: React.FC<TableComponentProps> = ({
 						className="text-green-500 hover:text-green-700"
 						href={pdf}
 						target={"_blank"}
+						rel="noreferrer"
 					>
 						Start lesson
 					</a>

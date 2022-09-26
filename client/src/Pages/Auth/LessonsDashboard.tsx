@@ -29,7 +29,7 @@ const data = [
 	},
 ];
 
-const LessonsDashboard: React.FC<LessonsDashboardProps> = ({}) => {
+const LessonsDashboard: React.FC<LessonsDashboardProps> = () => {
 	const { id } = useParams();
 	const states = useLocation();
 	const datas: any = states.state;

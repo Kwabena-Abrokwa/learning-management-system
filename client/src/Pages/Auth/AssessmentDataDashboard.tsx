@@ -1,44 +1,28 @@
 import React from "react";
 import DashboardLayout from "../../Components/LayoutComponent/DashboardLayout";
 import TableComponent from "../../Components/MadeComponent/TableComponent";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
-import { LessonsData } from "../../Data/LessonsData";
-import CustomButton from "../../Components/Customs/CustomButton";
-import axios from "axios";
+import { useParams, useLocation } from "react-router-dom";
+import { AssessmentData } from "../../Data/AssessmentData";
 
-interface LessonsDashboardProps {}
+interface AssessmentDataDashboardProps {}
 
-const LessonsDashboard: React.FC<LessonsDashboardProps> = () => {
+const AssessmentDataDashboard: React.FC<AssessmentDataDashboardProps> = () => {
 	const { id } = useParams();
 	const states = useLocation();
 	const datas: any = states.state;
-	const navigate = useNavigate();
 
-	const books: any = LessonsData.filter((items) => items.course_code === id);
-
-	const handleUnenroll = () => {
-		axios
-			.post(`unenroll/${id}`)
-			.then(() => {
-				navigate("/dashboard");
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	};
+	const books: any = AssessmentData.filter(
+		(items: any) => items.course_code === id
+	);
 
 	return (
 		<DashboardLayout>
 			<div>
 				<div className="flex justify-between px-5 items-center">
-					<h1 className="text-4xl py-5 font-bold">{datas.name}</h1>
-					<div className="w-60">
-						<CustomButton
-							children="Unenroll from course"
-							onclick={handleUnenroll}
-							backGroundColor={"red"}
-						/>
-					</div>
+					<h1 className="text-4xl py-5 font-bold">
+						{datas.name} assessments
+					</h1>
+					<div className="w-60"></div>
 				</div>
 				<div className="flex flex-col">
 					<div className="overflow-x-auto">
@@ -63,7 +47,7 @@ const LessonsDashboard: React.FC<LessonsDashboardProps> = () => {
 												scope="col"
 												className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
 											>
-												Start lessons
+												Download file
 											</th>
 										</tr>
 									</thead>
@@ -74,7 +58,7 @@ const LessonsDashboard: React.FC<LessonsDashboardProps> = () => {
 												title={item.title}
 												pdf={item.pdf}
 												key={n}
-												buttonText={"Start lesson"}
+												buttonText={"Download"}
 											/>
 										))}
 								</table>
@@ -87,4 +71,4 @@ const LessonsDashboard: React.FC<LessonsDashboardProps> = () => {
 	);
 };
 
-export default LessonsDashboard;
+export default AssessmentDataDashboard;

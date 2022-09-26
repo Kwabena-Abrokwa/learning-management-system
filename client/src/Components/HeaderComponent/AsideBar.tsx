@@ -13,7 +13,7 @@ const AsideBar: React.FC<AsideBarProps> = () => {
 			<Link to={"/dashboard"}>
 				<div
 					className={`mt-10 ${
-						pathname === "/dashboard"  ? "bg-black mx-2" : ""
+						pathname === "/dashboard" ? "bg-black mx-2" : ""
 					}`}
 				>
 					<p className="text-center text-xl py-3 cursor-pointer">Home</p>
@@ -27,6 +27,17 @@ const AsideBar: React.FC<AsideBarProps> = () => {
 				>
 					<p className="text-center text-xl py-3 cursor-pointer">
 						Courses
+					</p>
+				</div>
+			</Link>
+			<Link to={"/assessment"}>
+				<div
+					className={`mt-10 ${
+						pathname === "/assessment" ? "bg-black mx-2" : ""
+					}`}
+				>
+					<p className="text-center text-xl py-3 cursor-pointer">
+						Self Assessment
 					</p>
 				</div>
 			</Link>

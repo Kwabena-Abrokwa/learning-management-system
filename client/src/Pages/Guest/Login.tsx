@@ -60,13 +60,13 @@ const Login: React.FC<LoginProps> = () => {
 	};
 
 	return (
-		<section>
-			<div className="lg:w-2/6 mx-auto mt-16">
+		<section className="loginBg h-screen">
+			<div className="lg:w-2/6 mx-auto pt-16">
 				<div className="logo w-20 mx-auto"></div>
 				<div className="title text-center py-6">
-					<h3 className="text-xl font-medium">Sign in here</h3>
+					<h3 className="text-xl font-medium text-white">Sign in here</h3>
 				</div>
-				<div className="w-full lg:shadow-md lg:border lg:rounded-lg p-2 my-5">
+				<div className="w-full lg:shadow-md lg:border lg:rounded-lg p-2 my-5 bg-white">
 					<form
 						className="w-11/12 lg:w-5/6 mx-auto"
 						onSubmit={handleLogin}

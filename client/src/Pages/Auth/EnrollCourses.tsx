@@ -3,73 +3,7 @@ import React, { useState } from "react";
 import DashboardLayout from "../../Components/LayoutComponent/DashboardLayout";
 import CourseEnroll from "../../Components/MadeComponent/CourseEnroll";
 import { useNavigate } from "react-router";
-
-const data = [
-	{
-		course_id: "1001",
-		name: "JavaScript Mastery",
-		title: "This is helps you with JavaScript concepts. Continue reading content from this book and master Javascript",
-		book: require("../../Assets/bookimg/book1.jpeg"),
-		imag: "book1.jpeg",
-		level: "Beginner",
-	},
-	{
-		course_id: "1002",
-		name: "Learn Digital Marketing",
-		title: "This is helps you with Digital Marketing concepts. Enroll to course now",
-		book: require("../../Assets/bookimg/book2.jpg"),
-		imag: "book2.jpg",
-		level: "Beginner",
-	},
-	{
-		course_id: "1003",
-		name: "How to survive",
-		title: "This is helps you with JavaScript concepts. Continue reading content from this book and master Javascript",
-		book: require("../../Assets/bookimg/book3.jpeg"),
-		imag: "book3.jpeg",
-		level: "Beginner",
-	},
-	{
-		course_id: "1004",
-		name: "Your best life",
-		title: "This is helps you with JavaScript concepts. Continue reading content from this book and master Javascript",
-		book: require("../../Assets/bookimg/book4.webp"),
-		imag: "book4.webp",
-		level: "Beginner",
-	},
-	{
-		course_id: "1001",
-		name: "JavaScript Mastery",
-		title: "This is helps you with JavaScript concepts. Continue reading content from this book and master Javascript",
-		book: require("../../Assets/bookimg/book1.jpeg"),
-		imag: "book1.jpeg",
-		level: "Beginner",
-	},
-	{
-		course_id: "1002",
-		name: "Learn Digital Marketing",
-		title: "This is helps you with Digital Marketing concepts. Enroll to course now",
-		book: require("../../Assets/bookimg/book2.jpg"),
-		imag: "book2.jpg",
-		level: "Beginner",
-	},
-	{
-		course_id: "1003",
-		name: "How to survive",
-		title: "This is helps you with JavaScript concepts. Continue reading content from this book and master Javascript",
-		book: require("../../Assets/bookimg/book3.jpeg"),
-		imag: "book3.jpeg",
-		level: "Beginner",
-	},
-	{
-		course_id: "1004",
-		name: "Your best life",
-		title: "This is helps you with JavaScript concepts. Continue reading content from this book and master Javascript",
-		book: require("../../Assets/bookimg/book4.webp"),
-		imag: "book4.webp",
-		level: "Beginner",
-	},
-];
+import { CourseData } from "../../Data/CourseData";
 
 interface EnrollCoursesProps {}
 
@@ -79,7 +13,7 @@ const EnrollCourses: React.FC<EnrollCoursesProps> = () => {
 	const level = localStorage.getItem("level");
 	const navigate = useNavigate();
 
-	const selectedCourse = data.filter((item) => item.level === level);
+	const selectedCourse = CourseData.filter((item) => item.level === level);
 
 	const enrollForCourse = async (
 		course_id: string,

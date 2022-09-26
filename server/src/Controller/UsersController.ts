@@ -129,3 +129,23 @@ export const enrollUsers = (req: Request, res: Response) => {
 		}
 	);
 };
+
+export const unenrollUsers = (req: Request, res: Response) => {
+	const course_id = req.params.id;
+
+	db.query(
+		"DELETE FROM courses WHERE course_id = ?",
+		[course_id],
+		(err, result) => {
+			if (err) {
+				console.log(err);
+				return res.status(401).json({ message: "Something went wrong" });
+			} else {
+				console.log(`Unenrolled succesffully, start lessons`);
+				return res.status(201).json({
+					message: `Unenrolled succesffully, start lessons`,
+				});
+			}
+		}
+	);
+};

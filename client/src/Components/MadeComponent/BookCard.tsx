@@ -7,6 +7,8 @@ interface BookCardProps {
 	name: string;
 	title: string;
 	course_id: string;
+	buttonText?: string;
+	type: string
 }
 
 const BookCard: React.FC<BookCardProps> = ({
@@ -14,6 +16,8 @@ const BookCard: React.FC<BookCardProps> = ({
 	name,
 	title,
 	course_id,
+	buttonText,
+	type,
 }) => {
 	return (
 		<div className="lg:col-span-3 cursor-pointer py-2 hover:shadow-md rounded-md shadow ">
@@ -29,8 +33,8 @@ const BookCard: React.FC<BookCardProps> = ({
 					</h2>
 					<p className="pb-2 ">{title}</p>
 				</div>
-				<Link to={`../lessons/${course_id}`} state={{ name: name }}>
-					<CustomButton children={"View course"} />
+				<Link to={`../${type}/${course_id}`} state={{ name: name }}>
+					<CustomButton children={buttonText || " "} />
 				</Link>
 			</div>
 		</div>

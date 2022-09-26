@@ -6,9 +6,9 @@ import CustomButton from "../../Components/Customs/CustomButton";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-interface HomeDashboardProps {}
+interface AssestmentDashboardProps {}
 
-const HomeDashboard: React.FC<HomeDashboardProps> = () => {
+const AssessmentDashboard: React.FC<AssestmentDashboardProps> = () => {
 	const [courses, setcourses] = useState([]);
 	const [loader, setloader] = useState<Boolean>(true);
 	const user_id = localStorage.getItem("user_id");
@@ -48,7 +48,8 @@ const HomeDashboard: React.FC<HomeDashboardProps> = () => {
 					<div className="text-center w-5/6 mx-auto">
 						<img src={kids} className="w-full" alt="kids" />
 						<h1 className="text-xl py-5 font-bold">
-							No courses enrolled yet
+							You can not take any assessments when you have not enrolled
+							to any courses yet.
 						</h1>
 						<CustomButton
 							children="Go to courses"
@@ -57,7 +58,9 @@ const HomeDashboard: React.FC<HomeDashboardProps> = () => {
 					</div>
 				) : (
 					<div>
-						<h1 className="text-4xl py-5 font-bold">Enrolled courses</h1>
+						<h1 className="text-4xl py-5 font-bold">
+							Courses you can take assessments on.
+						</h1>
 						<div className="lg:grid lg:grid-cols-12 gap-4">
 							{courses &&
 								courses.map((items: any) => (
@@ -66,8 +69,8 @@ const HomeDashboard: React.FC<HomeDashboardProps> = () => {
 										name={items.name}
 										title={items.title}
 										course_id={items.course_id}
-										buttonText={"View course"}
-										type={"lessons"}
+										buttonText={"Go to assessments"}
+										type={"assessment"}
 									/>
 								))}
 						</div>
@@ -78,4 +81,4 @@ const HomeDashboard: React.FC<HomeDashboardProps> = () => {
 	);
 };
 
-export default HomeDashboard;
+export default AssessmentDashboard;

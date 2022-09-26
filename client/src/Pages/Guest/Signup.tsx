@@ -67,15 +67,15 @@ const Signup: React.FC<SignupProps> = () => {
 	};
 
 	return (
-		<section>
+		<section className="signupBg h-screen">
 			<div className="lg:w-2/6 mx-auto mt-1">
 				<div className="logo w-20 mx-auto"></div>
 				<div className="title text-center py-6">
-					<h3 className="text-xl font-medium">
+					<h3 className="text-xl font-medium text-white">
 						Create an account with us
 					</h3>
 				</div>
-				<div className="w-full lg:shadow-md lg:border lg:rounded-lg p-2 my-5">
+				<div className="w-full lg:shadow-md lg:border lg:rounded-lg p-2 my-5 bg-white">
 					<form
 						className="w-11/12 lg:w-5/6 mx-auto"
 						onSubmit={handleLogin}
@@ -109,9 +109,15 @@ const Signup: React.FC<SignupProps> = () => {
 								handleChange={handleChange}
 								selectName={"entry"}
 							>
-								<option value="Beginner">Beginner</option>
-								<option value="Intermediate">Intermediate</option>
-								<option value="Advance">Advance</option>
+								<option value="Beginner">
+									Beginner - (6 - 7 years)
+								</option>
+								<option value="Intermediate">
+									Intermediate - (8 - 10 years)
+								</option>
+								<option value="Advance">
+									Advance - (11 - 12 years)
+								</option>
 							</CustomSelect>
 						</div>
 						<div className="my-8">

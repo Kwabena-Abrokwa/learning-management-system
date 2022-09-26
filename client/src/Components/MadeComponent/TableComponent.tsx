@@ -4,12 +4,14 @@ interface TableComponentProps {
 	name: string;
 	title: string;
 	pdf: string;
+	buttonText: string
 }
 
 const TableComponent: React.FC<TableComponentProps> = ({
 	name,
 	title,
 	pdf,
+	buttonText
 }) => {
 	return (
 		<tbody className="divide-y divide-gray-200">
@@ -27,7 +29,9 @@ const TableComponent: React.FC<TableComponentProps> = ({
 						target={"_blank"}
 						rel="noreferrer"
 					>
-						Start lesson
+						{
+buttonText
+						}
 					</a>
 				</td>
 			</tr>
